@@ -4,6 +4,7 @@
 {% include 'components/header.html' %}
 {% include 'components/messages.html' %}
 <div class="flex flex-col w-full h-full justify-center items-center mt-10">
+  {% if request.user.rol == 1 %}
   <div class="flex flex-col justify-start w-full max-w-screen-lg">
     <div class="flex h-full justify-start font-sans font-bold text-2xl">İlan oluştur</div>
     <div class="flex w-full flex-col mt-5 justify-start items-start space-y-2">
@@ -82,6 +83,9 @@
         </div>
       </form>
     </div>
+    {% else %}
+    <div class="font-semibold text-2xl">İlan oluşturma yetkiniz yok.</div>
+    {% endif %}
   </div>
 
   {% endblock body %}
