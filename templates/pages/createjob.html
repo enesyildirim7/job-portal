@@ -1,0 +1,88 @@
+<!-- prettier-ignore -->
+{% extends "layouts/main.html" %}
+{% block body %}
+{% include 'components/header.html' %}
+{% include 'components/messages.html' %}
+<div class="flex flex-col w-full h-full justify-center items-center mt-10">
+  <div class="flex flex-col justify-start w-full max-w-screen-lg">
+    <div class="flex h-full justify-start font-sans font-bold text-2xl">İlan oluştur</div>
+    <div class="flex w-full flex-col mt-5 justify-start items-start space-y-2">
+      <form method="POST">
+        {% csrf_token %}
+        <div class="flex flex-row mb-4">
+          <div class="flex flex-col items-start mr-4">
+            <label>İlan Başlığı</label>
+            <input type="text" name="baslik" class="form-elements w-96" />
+          </div>
+          <div class="flex flex-col items-start mr-4">
+            <label>Pozisyon</label>
+            <input type="text" name="pozisyon" class="form-elements w-96" />
+          </div>
+          <div class="flex flex-col items-start">
+            <label>Deneyim</label>
+            <select name="deneyim" class="form-elements">
+              <option value="0">Stajyer</option>
+              <option value="1">Başlangıç Seviye</option>
+              <option value="2">Uzman</option>
+              <option value="3">Üst Düzey</option>
+              <option value="4">Yönetici</option>
+              <option value="5">Hepsi</option>
+            </select>
+          </div>
+        </div>
+        <div class="flex flex-row items-start">
+          <div class="flex flex-col mr-4">
+            <label>Detaylar</label>
+            <textarea
+              name="detaylar"
+              rows="8"
+              cols="48"
+              class="border border-slate-700 rounded-md p-4"
+            ></textarea>
+          </div>
+          <div class="flex flex-col">
+            <div class="flex flex-row">
+              <div class="flex flex-col items-start mr-4">
+                <label>İlan Türü</label>
+                <select name="ilan_turu" class="form-elements">
+                  <option value="0">Freelance</option>
+                  <option value="1">Yarı Zamanlı</option>
+                  <option value="2">Tam Zamanlı</option>
+                </select>
+              </div>
+              <div class="flex flex-col items-start mr-4">
+                <label>Çalışma Şekli</label>
+                <select name="calisma_sekli" class="form-elements">
+                  <option value="0">İş Yerinde</option>
+                  <option value="1">Uzaktan</option>
+                  <option value="2">Hibrit</option>
+                </select>
+              </div>
+              <div class="flex flex-col items-start mr-4">
+                <label>Aday Sayısı</label>
+                <input type="number" name="aday_sayisi" class="form-elements w-16" />
+              </div>
+            </div>
+            <div class="flex flex-row mt-4">
+              <div class="flex flex-col items-start mr-4">
+                <label>Etiketler</label>
+                <input type="text" name="etiketler" class="form-elements w-92" />
+              </div>
+              <div class="flex flex-col items-start mr-4">
+                <label>Şirket</label>
+                <input type="text" name="sirket" class="form-elements w-92" />
+              </div>
+            </div>
+            <div class="flex flex-row mt-4">
+              <button type="submit" class="w-48 h-12 rounded-lg text-white bg-teal-500">
+                Yayınla
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  {% endblock body %}
+</div>

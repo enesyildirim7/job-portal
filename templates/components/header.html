@@ -1,0 +1,41 @@
+<header class="flex w-full justify-between items-center min-h-24 px-48 py-6">
+  <div class="flex flex-row space-x-3 justify-center items-center">
+    <span>
+      <a href="/" class="font-sans font-bold text-2xl text-slate-800">Baykar</a>
+    </span>
+  </div>
+
+  <div class="flex justify-end w-52 space-x-3">
+    {% if request.user.is_authenticated is False %}
+    <a href="{% url 'users:login' %}">
+      <button class="w-24 h-9 rounded-lg bg-slate-900 text-sm text-slate-200 px-4 py-1.5">
+        Giriş Yap
+      </button>
+    </a>
+    <a href="{% url 'users:signup' %}">
+      <button class="w-24 h-9 rounded-lg bg-slate-900 text-sm text-slate-200 px-4 py-1.5">
+        Kaydol
+      </button>
+    </a>
+    {% else %}
+    <div class="header-dropdown">
+      <button onclick="dropClick()" class="header-user-buton" style="width: 120px">
+        {{ request.user.isim }} {{request.user.soyisim}}
+      </button>
+      <div id="dropy" class="drop-content">
+        <a href="{% url 'users:profile' %}">
+          <button class="header-drop-buton rounded-t-md">Hesap</button>
+          {% if request.user.is_superuser %}
+          <a href="/admin" target="_blank">
+            <button class="header-drop-buton">Admin Panel</button>
+          </a>
+          {% endif %}
+        </a>
+        <a href="{% url 'users:logout' %}">
+          <button class="header-drop-buton rounded-b-md">Çıkış Yap</button>
+        </a>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</header>

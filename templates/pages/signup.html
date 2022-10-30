@@ -1,0 +1,51 @@
+<!-- prettier-ignore -->
+{% extends "layouts/main.html" %}
+{% block body %}
+{% include 'components/header.html' %}
+{% include 'components/messages.html' %}
+<div class="flex justify-center items-center">
+  <div class="h-full">
+    {% if request.user.is_authenticated %}
+    <div class="page_text">Hesabına zaten giriş yapılmış.</div>
+    {% else %}
+    <h3 class="text-black font-bold font-sans items-center text-center text-lg px-20">
+      Hesap oluştur
+    </h3>
+    <form method="POST" class="flex flex-col w-full space-y-3">
+      {% csrf_token %}
+
+      <label>Ben;</label>
+      <div class="flex flex-row space-x-2">
+        <div
+          class="flex flex-col justify-center items-center rounded border bg-gradient-to-tr from-sky-200 to-sky-100 border-slate-400 w-1/2 px-4 py-2"
+        >
+          <div class="mb-2">İşverenim</div>
+          <input type="radio" name="rol" value="1" required />
+        </div>
+        <div
+          class="flex flex-col justify-center items-center rounded border bg-gradient-to-tr from-violet-200 to-fuchsia-100 border-slate-400 w-1/2 px-4 py-2"
+        >
+          <div class="mb-2">İş arıyorum</div>
+          <input type="radio" name="rol" value="2" required />
+        </div>
+      </div>
+
+      <div>{{ form.isim }}</div>
+      <div>{{ form.soyisim }}</div>
+      <div>{{ form.email }}</div>
+      <div>{{ form.password }}</div>
+      <div>{{ form.passcheck }}</div>
+
+      <button type="submit" class="rounded-lg bg-slate-700 h-10 text-slate-200">
+        Hesabını Oluştur
+      </button>
+      <div class="text-sm text-center font-normal font-sans pt-5">
+        Hesabın var mı? |
+        <a href="/user/login" class="no-underline text-black font-semibold">Giriş Yap</a>
+      </div>
+    </form>
+    {% endif %}
+  </div>
+</div>
+
+{% endblock body %}

@@ -1,0 +1,135 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("http://fonts.cdnfonts.com/css/cunia?styles=28117");
+@import url("http://fonts.cdnfonts.com/css/gotham");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.form-elements {
+  border-radius: 4px;
+  height: 2.5rem;
+  width: 100%;
+  border-width: 1px;
+  border-color: black;
+  padding-left: 1rem;
+  font-family: "Inter";
+}
+
+.message-box {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 460px;
+  height: 50px;
+  padding: 20px 20px;
+  font-size: 16px;
+  border-radius: 3px;
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  margin: auto;
+  top: 10px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.success {
+  background: rgba(123, 255, 90, 0.5);
+  border: 1px solid rgba(79, 255, 35, 0.7);
+  backdrop-filter: blur(5px);
+  color: green;
+  justify-content: center;
+}
+
+.warning {
+  background: rgba(191, 140, 0, 0.3);
+  border: 1px solid rgba(255, 215, 35, 0.3);
+  backdrop-filter: blur(5px);
+  color: rgba(110, 90, 0, 0.7);
+  justify-content: center;
+}
+
+.info {
+  background: rgba(94, 0, 131, 0.3);
+  border: 1px solid rgba(138, 35, 255, 0.3);
+  backdrop-filter: blur(5px);
+  color: rgba(132, 0, 255, 0.7);
+  justify-content: center;
+}
+
+.error {
+  background: rgba(131, 0, 0, 0.3);
+  border: 1px solid rgba(255, 35, 35, 0.3);
+  backdrop-filter: blur(5px);
+  color: rgba(135, 0, 0, 0.7);
+  justify-content: center;
+}
+
+.header-dropdown {
+  position: relative;
+  display: inline-block;
+  z-index: 100;
+}
+
+.header-user-buton {
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  height: 36px;
+  min-width: 8rem;
+  background-color: #161c24;
+  align-self: center;
+  padding: 0 0.75rem;
+  border-radius: 4px;
+  border: 1px solid rgb(148, 148, 148, 0.7);
+  color: rgb(204, 204, 204);
+}
+
+.show-drop {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.drop-content {
+  display: none;
+  position: absolute;
+  min-width: 8rem;
+  overflow: auto;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 8px;
+}
+
+.header-drop-buton {
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  height: 2rem;
+  width: 8rem;
+  background-color: rgb(75 85 99);
+  align-self: center;
+  padding: 0px 10px;
+  border: none;
+  border-bottom: 1px solid rgb(170, 170, 170, 0.2);
+  color: white;
+}
+
+.header-drop-buton-buton:hover {
+  background-color: rgb(118, 127, 140);
+}
+
+.tab-buton {
+  border-radius: 4px;
+  padding: 4px 12px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.tab-buton:hover {
+  background-color: rgb(231, 232, 240);
+}

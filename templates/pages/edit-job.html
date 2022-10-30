@@ -1,0 +1,111 @@
+<!-- prettier-ignore -->
+{% extends "layouts/main.html" %}
+{% block body %}
+{% include 'components/header.html' %}
+{% include 'components/messages.html' %}
+<div class="flex flex-col w-full h-full justify-center items-center mt-10">
+  <div class="flex flex-col justify-start w-full max-w-screen-lg">
+    <div class="flex h-full justify-start font-sans font-bold text-2xl">İlan oluştur</div>
+    <div class="flex w-full flex-col mt-5 justify-start items-start space-y-2">
+      <form method="POST">
+        {% csrf_token %}
+        <div class="flex flex-row mb-4">
+          <div class="flex flex-col items-start mr-4">
+            <label>İlan Başlığı</label>
+            <input
+              type="text"
+              name="baslik"
+              class="form-elements w-96"
+              value="{{form.baslik.value}}"
+            />
+          </div>
+          <div class="flex flex-col items-start mr-4">
+            <label>Pozisyon</label>
+            <input
+              type="text"
+              name="pozisyon"
+              class="form-elements w-96"
+              value="{{form.pozisyon.value}}"
+            />
+          </div>
+          <div class="flex flex-col items-start">
+            <label>Deneyim</label>
+            <select name="deneyim" class="form-elements">
+              {% for d in form.deneyim %} {{d}} {% endfor %}
+            </select>
+          </div>
+        </div>
+        <div class="flex flex-row items-start">
+          <div class="flex flex-col mr-4">
+            <label>Detaylar</label>
+            <textarea
+              name="detaylar"
+              rows="8"
+              cols="48"
+              class="border border-slate-700 rounded-md p-4"
+            >
+{{form.detaylar.value}}</textarea
+            >
+          </div>
+          <div class="flex flex-col">
+            <div class="flex flex-row">
+              <div class="flex flex-col items-start mr-4">
+                <label>İlan Türü</label>
+                <select name="ilan_turu" class="form-elements">
+                  {% for d in form.ilan_turu %} {{d}} {% endfor %}
+                </select>
+              </div>
+              <div class="flex flex-col items-start mr-4">
+                <label>Çalışma Şekli</label>
+                <select name="calisma_sekli" class="form-elements">
+                  {% for d in form.calisma_sekli %} {{d}} {% endfor %}
+                </select>
+              </div>
+              <div class="flex flex-col items-start mr-4">
+                <label>Aday Sayısı</label>
+                <input
+                  type="number"
+                  name="aday_sayisi"
+                  class="form-elements w-16"
+                  value="{{form.aday_sayisi.value}}"
+                />
+              </div>
+            </div>
+            <div class="flex flex-row mt-4">
+              <div class="flex flex-col items-start mr-4">
+                <label>Etiketler</label>
+                <input
+                  type="text"
+                  name="etiketler"
+                  class="form-elements w-92"
+                  value="{{form.etiketler.value|join:', '}}"
+                />
+              </div>
+              <div class="flex flex-col items-start mr-4">
+                <label>Şirket</label>
+                <input
+                  type="text"
+                  name="sirket"
+                  class="form-elements w-92"
+                  value="{{form.sirket.value}}"
+                />
+              </div>
+            </div>
+            <div class="flex flex-row mt-4 space-x-4 mt-14">
+              <button type="submit" class="w-48 h-12 rounded-lg text-white bg-teal-500">
+                Güncelle
+              </button>
+              <a href="/jobs/{{id}}/delete">
+                <button type="button" class="w-48 h-12 rounded-lg text-white bg-red-500">
+                  Sil
+                </button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  {% endblock body %}
+</div>

@@ -1,0 +1,47 @@
+<div class="flex flex-col w-full">
+  {% for ilan in kaydedilen %}
+  <div class="rounded-lg px-6 py-3 w-full h-24 border mb-2">
+    <div class="flex flex-row justify-between items-center">
+      <div class="w-3/4">
+        <div class="flex flex-col h-full justify-between">
+          <div class="flex flex-row justify-between">
+            <div class="flex flex-row space-x-4 items-center">
+              <div class="font-semibold">{{ilan.baslik}}</div>
+              <div>|</div>
+              <div class="font-normal text-sm">{{ilan.pozisyon}}</div>
+            </div>
+            <div class="flex flex-row space-x-2">
+              <div class="flex flex-col justify-center items-center">
+                <div class="text-[10px]">İlan Türü</div>
+                <div class="font-normal text-[12px] rounded-md bg-teal-100 px-3 py-1">
+                  {{ilan.get_ilan_turu_display}}
+                </div>
+              </div>
+              <div class="flex flex-col justify-center items-center">
+                <div class="text-[10px]">Çalışma Şekli</div>
+                <div class="font-normal text-[12px] rounded-md bg-emerald-100 px-3 py-1">
+                  {{ilan.get_calisma_sekli_display}}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-row space-x-2">
+            {% for etiket in ilan.etiketler.all %}
+            <div class="px-2 py-1 bg-slate-100 rounded-lg text-[12px]">{{etiket}}</div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <div>
+        <a href="/jobs/{{ilan.id}}">
+          <button
+            class="rounded-lg bg-gradient-to-tr from-slate-800 to-slate-600 w-24 h-10 text-white"
+          >
+            İncele
+          </button>
+        </a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>

@@ -1,0 +1,54 @@
+<div class="flex flex-col">
+  <div class="font-sans text-xl mb-10">Kullanıcı Bilgileri</div>
+  <form method="POST" class="flex-col mb-10">
+    {% csrf_token %}
+
+    <div class="flex flex-row mb-10 space-x-4">
+      <div class="flex flex-col">
+        <label>İsim</label>
+        <input
+          type="text"
+          name="isim"
+          class="form-elements w-60"
+          value="{{user_form.isim.value}}"
+        />
+      </div>
+      <div class="flex flex-col">
+        <label>Soyisim</label>
+        <input
+          type="text"
+          name="soyisim"
+          class="form-elements w-60"
+          value="{{user_form.soyisim.value}}"
+        />
+      </div>
+    </div>
+    <div class="flex flex-row justify-between">
+      <div class="flex flex-col">
+        <label>Email</label>
+        <input
+          type="email"
+          name="email"
+          class="form-elements w-72"
+          value="{{user_form.email.value}}"
+        />
+      </div>
+      <div class="flex justify-end items-end">
+        <button
+          type="submit"
+          class="rounded-lg bg-gradient-to-tr from-slate-800 to-slate-600 text-white h-10 px-4 py-2"
+        >
+          Güncelle
+        </button>
+      </div>
+    </div>
+  </form>
+  <a href="{% url 'user:password-change' %}" target="_blank">
+    <button
+      type="button"
+      class="rounded-lg bg-gradient-to-tr from-slate-800 to-slate-600 text-white h-10 px-4 py-2"
+    >
+      Şifre Değiştir
+    </button>
+  </a>
+</div>

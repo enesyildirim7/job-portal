@@ -1,0 +1,44 @@
+<!-- prettier-ignore -->
+{% extends "layouts/main.html" %}
+{% block body %}
+{% include 'components/header.html' %}
+{% include 'components/messages.html' %}
+<div class="flex justify-center items-center">
+  <div class="h-full">
+    {% if request.user.is_authenticated %}
+    <div class="page_text">Hesabına zaten giriş yapılmış.</div>
+    {% else %}
+    <h3 class="text-black font-bold font-sans items-center text-center text-lg px-20">
+      Hesabına giriş yap
+    </h3>
+    <form method="POST" class="flex flex-col w-full space-y-3">
+      {% csrf_token %}
+
+      <div>{{ form.email }}</div>
+      <div>{{ form.password }}</div>
+
+      <div class="text-sm font-normal font-sans pb-5">
+        Şifreni mi unuttun? |
+        <a
+          href="{% url 'user:password-reset' %}"
+          target="_blank"
+          class="text-black font-semibold font-sans text-sm"
+        >
+          Şifre Yenile
+        </a>
+      </div>
+      <button type="submit" class="rounded-lg bg-slate-700 h-10 text-slate-200">
+        Giriş Yap
+      </button>
+      <div class="text-sm text-center font-normal font-sans pt-5">
+        Hesabın yok mu? |
+        <a href="/user/signup" class="no-underline text-black font-semibold">
+          Hesap oluştur
+        </a>
+      </div>
+    </form>
+    {% endif %}
+  </div>
+</div>
+
+{% endblock body %}
